@@ -107,6 +107,7 @@ public class Order {
   public List<OrderDomainEvent> noteCancelled() {
     switch (state) {
       case CANCEL_PENDING:
+      case APPROVED:
         this.state = OrderState.CANCELLED;
         return singletonList(new OrderCancelled());
       default:
